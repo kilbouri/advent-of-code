@@ -20,6 +20,7 @@ def compute(memory):
 
 		i += 4
 	return int(memory[0])
+
 def __main__(maxrange: int):
 	with open('input.txt', 'r') as input:
 		factoryMemory = input.read().split(',')
