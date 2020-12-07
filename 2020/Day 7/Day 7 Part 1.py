@@ -3,7 +3,6 @@ import re
 with open('input.txt', 'r') as input:
 	file = input.readlines()
 
-
 def findBags(lookFor: set, colors: dict):
 
 	hasMyBag = set(lookFor)
@@ -12,11 +11,9 @@ def findBags(lookFor: set, colors: dict):
 	for key in colors.keys():
 		for color in lookFor:
 			if color in colors[key]:
-				print(key + ": " + str(colors[key]))
 				hasMyBag.add(key)
 
 	afterLen = len(hasMyBag)
-
 	if (afterLen - initialLen == 0):
 		return hasMyBag
 	else:
