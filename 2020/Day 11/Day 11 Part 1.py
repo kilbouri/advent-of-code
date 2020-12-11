@@ -9,16 +9,16 @@ def checkSurroundings(seats, x, y):
 	occupiedCount = 0
 	for dX in range(-1, 2):
 		for dY in range(-1, 2):
-			if x + dX not in range(len(seats)):
+			if 0 > x + dX or x + dX >= len(seats):
 				continue
-			elif y + dY not in range(len(seats[0])):
+			elif 0 > y + dY or y + dY >= len(seats[x + dX]):
 				continue
 
 			if dX == 0 and dY == 0:
 				continue
-			else:
-				if seats[x + dX][y + dY] == '#':
-					occupiedCount += 1
+				
+			if seats[x + dX][y + dY] == '#':
+				occupiedCount += 1
 
 	return occupiedCount
 
@@ -49,9 +49,6 @@ while True:
 	
 	if seats[1] == 0:
 		break
-
-for i in range(len(seats[0])):
-	print(seats[0][i])
 
 # count the number of occupado seats
 print( sum(seats[0][i].count('#') for i in range(len(seats[0]))))

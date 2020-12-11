@@ -5,9 +5,9 @@ with open('input.txt', 'r') as input:
 	seats = list(map(list, rows))
 
 def getIndex(source, x, y):
-	if x not in range(0, len(source)):
+	if 0 > x or x >= len(source):
 		return None
-	elif y not in range(0, len(source[x])):
+	elif 0 > y or y >= len(source[x]):
 		return None
 	else:
 		return source[x][y]
@@ -20,15 +20,14 @@ def checkSurroundings(seats, x, y):
 
 			if dX == 0 and dY == 0:
 				continue
-
-			else:
-				delta = [dX, dY]
-				while getIndex(seats, x + delta[0], y + delta[1]) == '.':
-					delta[0] += dX
-					delta[1] += dY
 				
-				if getIndex(seats, x + delta[0], y + delta[1]) == '#':
-					occupiedCount += 1
+			delta = [dX, dY]
+			while getIndex(seats, x + delta[0], y + delta[1]) == '.':
+				delta[0] += dX
+				delta[1] += dY
+			
+			if getIndex(seats, x + delta[0], y + delta[1]) == '#':
+				occupiedCount += 1
 
 	return occupiedCount
 
