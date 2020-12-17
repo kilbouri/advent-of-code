@@ -125,26 +125,10 @@ while removed:
 					possibleFields[subkey] = newVal
 					removed = True
 
-print("Generating arrangements...")
-possibleArrangements = list(possibleFields[0])
-for i in range(1, len(possibleFields.keys())):
-	newPossibleArrangements = list()
-
-	for arrangement in possibleArrangements:
-		for field in possibleFields[i]:
-			if type(arrangement) == int:
-				arrangement = [arrangement]
-			
-			arrangement.append(field)
-			newPossibleArrangements.append(arrangement)
-	if newPossibleArrangements:
-		possibleArrangements = newPossibleArrangements
-
-print(f"Created {len(possibleArrangements)} arrangements.")
 print()
 matches = list(filter(lambda arrangement: checkFieldSet(validTickets, arrangement, attributes), possibleArrangements))
 
-print("Stringifying the first matching layout...")
+print("Stringifying the layout...")
 stringified = []
 for i in matches[0]:
 	stringified.append(intToAttrName[i])
