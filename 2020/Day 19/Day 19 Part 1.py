@@ -77,10 +77,6 @@ for rule in rules:
 for key in indexToPattern.keys():
 	indexToRString[key] = parsePattern(indexToPattern[key], indexToPattern)
 
-# debugging print for regex dictionary
-# for key in indexToRString.keys():
-# 	print(f"{key}: {indexToRString[key]}")
-
 matches = 0
 for message in messages:
 	if checkMessage(message, indexToRString[0]):
