@@ -2,7 +2,7 @@ from os import getcwd
 
 
 def main():
-    with open(getcwd() + "/2021/day02/input.txt", "r") as file:
+    with open(f"{getcwd()}/2021/day02/input.txt", "r") as file:
         depth = 0
         pos = 0
 

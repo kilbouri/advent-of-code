@@ -1,4 +1,4 @@
-from os import curdir
+from os import getcwd
 
 
 def window(iterable, size=2, incPartials=False):
@@ -27,7 +27,7 @@ def window(iterable, size=2, incPartials=False):
 
 
 def main():
-    with open(curdir + "/2021/day01/input.txt", "r") as file:
+    with open(f"{getcwd()}/2021/day01/input.txt", "r") as file:
         depths = list(map(int, file.readlines()))
 
         count = -1

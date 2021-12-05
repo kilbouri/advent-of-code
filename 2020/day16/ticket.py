@@ -1,12 +1,11 @@
 class Ticket:
 
-    _fieldRanges = {}
-
     def __init__(self) -> None:
+        self._fieldRanges = {}
         pass
 
     def getFields(self) -> set:
-        return self._fieldRanges.keys()
+        return set(self._fieldRanges.keys())
 
     def addFieldRange(self, label: str, ranges: list[str]) -> None:
         existingRanges = self._fieldRanges.get(label, [])
