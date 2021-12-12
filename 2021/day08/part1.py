@@ -1,5 +1,4 @@
 from os import getcwd
-from pprint import pprint
 
 
 def main():

@@ -1,6 +1,4 @@
 from os import getcwd
-from pprint import pprint
-from itertools import permutations, combinations
 
 
 def adjacent(x, y, maxX, maxY):
