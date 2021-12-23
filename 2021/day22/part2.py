@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+from itertools import product
+>>>>>>> 515db113696ee1bf07248c73e76748dfaaeccbcf
 from os import getcwd
 from re import findall
 from re import match
