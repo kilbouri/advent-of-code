@@ -6,7 +6,7 @@ def main():
     with open(f'{getcwd()}/2022/day01/input.txt', 'r') as file:
         dwarves = map(lambda x: x.splitlines(), file.read().split('\n\n'))
 
-    dwarfCals = sorted(map(lambda x: sum(map(int, x)), dwarves), reverse=True)
+    dwarfCals = sorted(map(lambda dwarf: sum(map(int, dwarf)), dwarves), reverse=True)
     print(sum(dwarfCals[:3]))
 
 if __name__ == "__main__":
