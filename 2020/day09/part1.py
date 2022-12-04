@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def find(nums: list, ambLen: int):
@@ -22,7 +22,7 @@ def find(nums: list, ambLen: int):
 
 
 def main():
-    with open(f"{getcwd()}/2020/day09/input.txt", 'r') as file:
+    with open(f"{dirname(__file__)}/input.txt", 'r') as file:
         nums = list(map(int, file.read().split()))
 
     find(nums, 25)

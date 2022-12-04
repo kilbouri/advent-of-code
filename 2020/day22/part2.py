@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def simulateRecursiveCombat(deckA: list, deckB: list) -> int:
@@ -51,7 +51,7 @@ def tallyScore(deck: list) -> int:
 
 
 def main():
-    with open(f"{getcwd()}/2020/day22/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         file = file.read()
 
     myDeck = file.split("\n\n")[0].split("\n")[1:]

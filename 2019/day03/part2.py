@@ -1,10 +1,10 @@
-from os import getcwd
+from os.path import dirname
 import re as regex
 
 
 def main():
     # open file and extract each move with regex for each wire (line)
-    with open(f"{getcwd()}/2019/day03/input.txt", "r") as source:
+    with open(f"{dirname(__file__)}/input.txt", "r") as source:
         moves1 = regex.findall(r"(.)(\d+),", source.readline())
         moves2 = regex.findall(r"(.)(\d+),", source.readline())
 

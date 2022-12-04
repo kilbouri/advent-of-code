@@ -1,4 +1,4 @@
-# from os import getcwd
+# from os.path import dirname
 # import re
 
 # def validateTicket(ticket: list, attrRanges: dict) -> bool:
@@ -49,7 +49,7 @@
 
 
 # def main():
-#     with open(f"{getcwd()}/2020/day16/input.txt", "r") as file:
+#     with open(f"{dirname(__file__)}/input.txt", "r") as file:
 #         file = file.read().split("\n\n")
 
 #     # file indices: 0-ticket pattern   1-your ticket   2-other tickets
@@ -124,7 +124,7 @@
 #     main()
 
 
-from os import getcwd
+from os.path import dirname
 from typing import ValuesView
 from ticket import Ticket
 import re
@@ -154,7 +154,7 @@ def removeUnique(index: int, label: str, labelList: list[set]):
 
 def main():
     # open the file, split into blocks: <fields>, <your ticket>, <other tickets>
-    with open(f"{getcwd()}/2020/day16/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.read().strip().split("\n\n")
 
         allFields = re.findall(r"(.*): (\d+-\d+) or (\d+-\d+)", file[0])

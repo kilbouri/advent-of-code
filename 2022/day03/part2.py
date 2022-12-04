@@ -1,11 +1,11 @@
-from os import getcwd
+from os.path import dirname
 from pprint import pprint as print
 
 from string import ascii_letters
 
 
 def main():
-    with open(f"{getcwd()}/2022/day03/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         sacks = file.read().splitlines()
 
     elfGroups = [tuple(sacks[i:i+3]) for i in range(0, len(sacks), 3)]

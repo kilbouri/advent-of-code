@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import re
 
 
@@ -30,7 +30,7 @@ def computeTileCoorinates(moves: list) -> tuple:
 def main():
     moves = re.compile(r"(e|se|sw|w|nw|ne)")
 
-    with open(f"{getcwd()}/2020/day24/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         lines = file.read().split("\n")
 
     # relates a tuple, (x, y), to a boolean value (True = Black, False = White)

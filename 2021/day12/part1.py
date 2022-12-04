@@ -1,5 +1,5 @@
 from collections import defaultdict
-from os import getcwd
+from os.path import dirname
 
 
 # depth-first traversal with one duplicate visit to any non-endpoint lowercase node
@@ -26,7 +26,7 @@ def allPaths(u, edges, _visited=set(), _path=[], _returnValue=[]):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day12/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         inputEdges = [l.strip().split("-") for l in file.readlines()]
 
     edges = defaultdict(list)

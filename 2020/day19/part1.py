@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import re
 
 
@@ -52,7 +52,7 @@ def checkMessage(message: str, rString: str) -> bool:
 
 
 def main():
-    with open(f"{getcwd()}/2020/day19/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         part = file.read().split("\n\n")
 
     rules = part[0].split("\n")

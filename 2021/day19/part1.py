@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from itertools import product
 from operator import sub, add
 from functools import cache
@@ -36,7 +36,7 @@ def match(originBeacons, beacons, threshold=12):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day19/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.read().split("\n\n")
         scanners = list(map(lambda snnr: {
             tuple(map(int, coord.strip().split(",")))

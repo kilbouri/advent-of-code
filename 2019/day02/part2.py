@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def compute(memory):
@@ -24,7 +24,7 @@ def compute(memory):
 
 
 def main(maxrange: int):
-    with open(f"{getcwd()}/2019/day02/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         factoryMemory = input.read().split(",")
 
     operand1 = range(maxrange)

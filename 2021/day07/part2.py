@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def moveCost(target, starting) -> int:
@@ -8,7 +8,7 @@ def moveCost(target, starting) -> int:
 
 
 def main():
-    with open(f"{getcwd()}/2021/day07/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = list(map(int, file.read().split(",")))
 
     targetRange = range(min(file), max(file) + 1)

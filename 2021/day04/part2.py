@@ -1,9 +1,9 @@
-from os import getcwd
+from os.path import dirname
 from board import Board
 
 
 def main():
-    with open(f"{getcwd()}/2021/day04/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         data = file.read().split("\n\n")
 
     # create a list of boards from the input

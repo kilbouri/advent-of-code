@@ -1,8 +1,8 @@
-from os import getcwd
+from os.path import dirname
 
 
 def main():
-    with open(f"{getcwd()}/2020/day06/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         groups = input.read().split("\n\n")
 
     count = 0

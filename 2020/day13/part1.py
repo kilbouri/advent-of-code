@@ -1,9 +1,9 @@
-from os import getcwd
+from os.path import dirname
 import math
 
 
 def main():
-    with open(f"{getcwd()}/2020/day13/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         file = file.readlines()
 
     myDepTime = int(file[0])

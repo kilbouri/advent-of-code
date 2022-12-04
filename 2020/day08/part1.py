@@ -1,9 +1,9 @@
-from os import getcwd
+from os.path import dirname
 import re
 
 
 def main():
-    with open(f"{getcwd()}/2020/day08/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         file = input.read()
 
     operations = re.findall(r"(nop|jmp|acc) (\+\d+|-\d+)", file)

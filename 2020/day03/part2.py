@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def countTrees(right: int, down: int):
@@ -9,7 +9,7 @@ def countTrees(right: int, down: int):
 
     _down = down
 
-    with open(f"{getcwd()}/2020/day03/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         for line in file:
             if _down != down:
                 _down += 1

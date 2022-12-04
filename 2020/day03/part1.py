@@ -1,8 +1,8 @@
-from os import getcwd
+from os.path import dirname
 
 
 def main():
-    with open(f"{getcwd()}/2020/day03/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         lineWidth = 30  # the max position allowed to be accessed in the string array
         horizPos = 0  # the position we're at horizontally
 

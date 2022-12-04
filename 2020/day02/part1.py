@@ -1,9 +1,9 @@
-from os import getcwd
+from os.path import dirname
 import re
 
 
 def main():
-    with open(f"{getcwd()}/2020/day02/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         validCount = 0
         for line in file:
 

@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from re import findall
 from re import match
 from collections import defaultdict
@@ -13,7 +13,7 @@ def parseStep(line):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day22/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.readlines()
         steps = map(parseStep, file)
 

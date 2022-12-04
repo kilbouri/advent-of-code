@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def doDay(fish: list):
@@ -14,7 +14,7 @@ def doDay(fish: list):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day06/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         fish = list(map(int, file.read().split(",")))
 
     for day in range(80):

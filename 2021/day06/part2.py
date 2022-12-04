@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def dictPlusEq(addTo: dict, key, val, default=0):
@@ -33,7 +33,7 @@ def simulateFish(initialFish: iter, days: int) -> int:
 
 
 def main():
-    with open(f"{getcwd()}/2021/day06/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         fish = map(int, file.read().split(","))
 
     print(simulateFish(fish, 256))

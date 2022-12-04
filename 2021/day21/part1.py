@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def diceGen():
@@ -8,7 +8,7 @@ def diceGen():
 
 
 def main():
-    with open(f"{getcwd()}/2021/day21/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.readlines()
         positions = list(map(lambda line: int(line[28:]), file))
 

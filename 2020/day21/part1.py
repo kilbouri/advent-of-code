@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import re
 
 a = re.compile(r"\(contains (.*)\)")  # extracts only allergens
@@ -16,7 +16,7 @@ def stripIngredients(food: str) -> list:
 
 
 def main():
-    with open(f"{getcwd()}/2020/day21/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         foods = file.read().split("\n")
 
     allergens = {}  # maps an allergen to the foods that contain it

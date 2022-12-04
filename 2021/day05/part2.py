@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from itertools import repeat
 
 
@@ -20,7 +20,7 @@ def traceLine(line: str):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day05/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         file = file.readlines()
 
     visitedPoints = {}

@@ -1,8 +1,8 @@
-from os import getcwd
+from os.path import dirname
 
 
 def main():
-    with open(f"{getcwd()}/2021/dayNN/test.txt") as file:
+    with open(f"{dirname(__file__)}/test.txt") as file:
         file = file.readlines()
     pass
 

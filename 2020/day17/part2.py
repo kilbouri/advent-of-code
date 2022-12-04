@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import copy
 
 # Z slice - the up/down in the pocket dimension
@@ -70,7 +70,7 @@ def countActive(pocket: dict):
 
 
 def main():
-    with open(f"{getcwd()}/2020/day17/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         file = file.read()
 
     pocketDimension = {}

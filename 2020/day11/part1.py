@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import copy
 
 
@@ -41,7 +41,7 @@ def applyRules(seats):
 
 
 def main():
-    with open(f"{getcwd()}/2020/day11/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         rows = list(input.read().split())
         seats = list(map(list, rows))
 

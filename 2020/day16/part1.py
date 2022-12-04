@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from ticket import Ticket
 import re
 
@@ -9,7 +9,7 @@ def strToIntSequence(tickStr: str):
 
 def main():
     # open the file, split into blocks: <fields>, <your ticket>, <other tickets>
-    with open(f"{getcwd()}/2020/day16/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.read().strip().split("\n\n")
 
     validTicket = Ticket()

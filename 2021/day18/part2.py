@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from ast import literal_eval
 from copy import deepcopy
 
@@ -75,7 +75,7 @@ def magnitude(x):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day18/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.readlines()
         sfNums = list(map(literal_eval, file))
 

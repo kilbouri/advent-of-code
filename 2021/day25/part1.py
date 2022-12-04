@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 from itertools import count
 from copy import deepcopy
 
@@ -33,7 +33,7 @@ def step(layout):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day25/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.readlines()
 
     # file = ['..........\n',

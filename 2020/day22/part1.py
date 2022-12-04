@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def simulateRound(deckA: list, deckB: list) -> None:
@@ -26,7 +26,7 @@ def tallyScore(deck: list) -> int:
 
 
 def main():
-    with open(f"{getcwd()}/2020/day22/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         file = file.read()
 
     # the winner of each round gets their card, then the opponents card

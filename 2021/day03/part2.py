@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def mostFrequentBit(nums: list, pos: int):
@@ -35,7 +35,7 @@ def findRating(nums: list, useLeastSigBit=False):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day03/input.txt", "r") as file:
+    with open(f"{dirname(__file__)}/input.txt", "r") as file:
         data = list(map(str.strip, file.readlines()))
 
     oxygen = int(findRating(data, False), 2)

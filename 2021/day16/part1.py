@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def getVersionType(bits, i):
@@ -41,7 +41,7 @@ def parsePacket(bits, i):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day16/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         file = file.read().strip()
         asBinary = bin(int(file, 16))[2:]
 

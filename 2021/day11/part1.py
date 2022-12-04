@@ -1,5 +1,5 @@
 from itertools import product
-from os import getcwd
+from os.path import dirname
 
 
 def adjacent(x, y, maxX, maxY):
@@ -49,7 +49,7 @@ def simulateStep(octos):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day11/input.txt") as file:
+    with open(f"{dirname(__file__)}/input.txt") as file:
         octos = [
             list(map(int, [c for c in line.strip()]))
             for line in file.readlines()

@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 
 
 def parseRoomLayout(layout: str):
@@ -17,7 +17,7 @@ def moveCost(numSpaces, type):
 
 
 def main():
-    with open(f"{getcwd()}/2021/day23/test.txt") as file:
+    with open(f"{dirname(__file__)}/test.txt") as file:
         file = file.read()
 
     roomLayout = parseRoomLayout(file)

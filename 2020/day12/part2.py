@@ -1,4 +1,4 @@
-from os import getcwd
+from os.path import dirname
 import re
 import math
 
@@ -13,7 +13,7 @@ def rotate(degrees: int, wp: list):
 
 
 def main():
-    with open(f"{getcwd()}/2020/day12/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         file = input.read()
 
     instructions = re.findall(r"(.)(\d+)", file)

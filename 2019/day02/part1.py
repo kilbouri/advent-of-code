@@ -1,8 +1,8 @@
-from os import getcwd
+from os.path import dirname
 
 
 def main():
-    with open(f"{getcwd()}/2019/day02/input.txt", "r") as input:
+    with open(f"{dirname(__file__)}/input.txt", "r") as input:
         instructions = input.read().split(",")
 
     for i in range(0, len(instructions), 4):
