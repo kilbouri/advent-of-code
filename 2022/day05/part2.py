@@ -43,17 +43,12 @@ def main():
         parse = re.match(r'move (\d+) from (\d+) to (\d+)', line)
         count, source, dest = map(int, parse.groups())
 
-        source -= 1
-        dest -= 1
+        sourceStack = stacks[source - 1]
+        destStack = stacks[dest - 1]
 
-        sourceStack = stacks[source]
-        destStack = stacks[dest]
-
-        for _ in range(count):
-            removed = sourceStack[:count]
-
-            stacks[source] = sourceStack[count:]
-            stacks[dest] = removed + destStack
+        removed = sourceStack[:count]
+        stacks[source - 1] = sourceStack[count:]
+        stacks[dest - 1] = removed + destStack
 
     print(''.join([stack[0] for stack in stacks]))
 
