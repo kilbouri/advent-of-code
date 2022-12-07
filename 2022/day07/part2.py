@@ -11,6 +11,38 @@ TOTAL_DIR_SIZE_KEY = '__totalSize'
 NON_CHILD_DIR_KEYS = ['..', DIR_NAME_KEY, DIR_FILES_SIZE_KEY, TOTAL_DIR_SIZE_KEY]
 
 
+def parseFs(input: str):
+    commandsWithOutput = input.split('$ ')[1:]  # first is an empty string
+
+    # heh unix go brrrrr
+    def mkdir(name, parent=None, size=0): return {
+        '..': parent,
+        DIR_NAME_KEY: name,
+        DIR_FILES_SIZE_KEY: 0,
+        DIR_FILES_SIZE_KEY: size
+    }
+
+    root = mkdir('/')
+    fsDir = root
+
+    for command, *output in map(str.splitlines, commandsWithOutput[1:]):  # first command is to move to root, we're already there
+        match command.split():
+            case ['cd', target]:
+                fsDir = fsDir[target]
+
+            case ['ls']:
+                # this is a chonker so I made it a function to shorten the list-comps below
+                def getData(pattern, string): return re.match(pattern, string).groups()[0]
+
+                dirs = [getData(r'dir ([^\n]+)', line) for line in output if line.startswith('dir')]
+                fileSizes = [getData(r'^(\d+)', line) for line in output if not line.startswith('dir')]
+
+                fsDir[DIR_FILES_SIZE_KEY] = sum(map(int, fileSizes))
+                fsDir.update([(dir, mkdir(dir, fsDir)) for dir in dirs])
+
+    return root
+
+
 def childDirs(folder: dict):
     return [folder[key] for key in folder.keys() if key not in NON_CHILD_DIR_KEYS]
 
@@ -18,9 +50,7 @@ def childDirs(folder: dict):
 def totalFolderSize(folder: dict):
     """
     Computes and returns the total size of all children in the provided folder.
-
-    ! IMPORTANT: the folder WILL BE MUTATED to contain a memoized total folder size key,
-    ! TOTAL_DIR_SIZE_KEY, to avoid repeating work!
+    ! IMPORTANT: the folder WILL BE MUTATED to contain a memoized total folder size
     """
     # use memoized value if we have it
     if TOTAL_DIR_SIZE_KEY in folder:
@@ -30,39 +60,8 @@ def totalFolderSize(folder: dict):
     totalSize = folder[DIR_FILES_SIZE_KEY] + childrenSize
 
     folder[TOTAL_DIR_SIZE_KEY] = totalSize  # memoize for future calls
+
     return totalSize
-
-
-def parseFs(input: str):
-    commandsWithOutput = tuple(map(str.splitlines, input.split('$ ')[1:]))
-
-    root = {
-        DIR_NAME_KEY: '/',
-        DIR_FILES_SIZE_KEY: 0
-    }
-
-    fsDir = root
-
-    for command, *output in commandsWithOutput[1:]:  # first command is to move to root
-        if command.startswith('ls'):
-            files = [int(re.match(r'^(\d+)', line).groups()[0]) for line in output if not line.startswith('dir')]
-            dirs = [re.match(r'dir ([^\n]+)', line).groups()[0] for line in output if line.startswith('dir')]
-
-            fsDir[DIR_FILES_SIZE_KEY] = sum(files)
-
-            for dir in dirs:
-                # create a new dir with parent set to cwd
-                fsDir[dir] = {
-                    '..': fsDir,  # parent ref
-                    DIR_NAME_KEY: dir,  # name for debugging
-                    DIR_FILES_SIZE_KEY: 0,  # self-size
-                }
-
-        if command.startswith('cd'):
-            moveTo = command.split(' ')[1]
-            fsDir = fsDir[moveTo]
-
-    return root
 
 
 def main():
