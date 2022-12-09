@@ -4,7 +4,7 @@ from pprint import pprint as print
 import re
 
 
-def ensureTailConstraint(headX, headY, tailX, tailY):
+def ensureTailConstraint(headX: int, headY: int, tailX: int, tailY: int):
     newTailX, newTailY = tailX, tailY
 
     deltaX, deltaY = tailX - headX, tailY - headY
