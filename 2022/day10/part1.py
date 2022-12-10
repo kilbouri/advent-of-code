@@ -9,10 +9,10 @@ def main():
 
     clock = 0
     xRegister = 1
-    total = 0  # this is a single value list to get around UnboundLocal errors in handleClockTick
+    total = 0
 
     def handleClockTick():
-        nonlocal total
+        nonlocal total  # explicitly state that I don't want to shadow total
         if clock in [20, 60, 100, 140, 180, 220]:
             total += clock * xRegister
 
