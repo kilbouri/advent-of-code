@@ -1,5 +1,5 @@
 from os.path import dirname
-from pprint import pprint as print
+from termcolor import colored
 
 import re
 
@@ -60,7 +60,11 @@ def main():
             # finally, update the visited set with the tail's position
             visited.add(knots[-1])
 
-    print(len(visited))
+    print(''.join([
+        colored('The tail of the longer rope visits ', 'white'),
+        colored(len(visited), 'yellow'),
+        colored(' positions.')
+    ]))
 
 
 if __name__ == "__main__":

@@ -1,6 +1,5 @@
 from os.path import dirname
-from pprint import pprint as print
-
+from termcolor import colored
 from itertools import product
 
 
@@ -27,7 +26,12 @@ def main():
     rows, cols = len(grid), len(grid[0])
     coordinates = coordinates = product(range(rows), range(cols))
 
-    print(sum([1 if visible(grid, *coord) else 0 for coord in coordinates]))
+    numVisibleTrees = sum([1 if visible(grid, *coord) else 0 for coord in coordinates])
+    print(''.join([
+        colored('There are ', 'white'),
+        colored(numVisibleTrees, 'yellow'),
+        colored(' trees visible from outside of the forest.')
+    ]))
 
 
 if __name__ == "__main__":

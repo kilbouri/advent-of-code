@@ -1,4 +1,5 @@
 from os.path import dirname
+from termcolor import colored
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
         screenX = (clock - 1) % 40
 
         spriteIsVisible = abs(xRegister - screenX) <= 1
-        screen[screenY][screenX] = '#' if spriteIsVisible else ' '
+        screen[screenY][screenX] = '█' if spriteIsVisible else ' '
 
     for instruction in instructions:
         if instruction[0] == 'noop':
@@ -33,7 +34,11 @@ def main():
             handleClockTick()
             xRegister += int(instruction[1])  # finish addx
 
-    print('\n'.join([''.join(line) for line in screen]))
+    crtImage = '\n'.join([''.join(line) for line in screen])
+    print(''.join([
+        colored('The CRT springs to life. It shows this image:\n\n', 'grey'),
+        colored(crtImage, 'yellow')
+    ]))
 
 
 if __name__ == "__main__":

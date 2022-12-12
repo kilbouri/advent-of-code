@@ -25,6 +25,7 @@ def main():
 
     print(colored(f"Launching Advent of Code {year} - Day {day} Part {part}", 'green'))
     print(f"{colored('Executing', 'red')} {colored(command, 'grey')}")
+    print('')
 
     system(command)
 

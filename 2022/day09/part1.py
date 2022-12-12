@@ -1,5 +1,5 @@
 from os.path import dirname
-from pprint import pprint as print
+from termcolor import colored
 
 import re
 
@@ -54,7 +54,11 @@ def main():
             tailX, tailY = newTailPosition = ensureTailConstraint(headX, headY, tailX, tailY)
             visited.add(newTailPosition)
 
-    print(len(visited))
+    print(''.join([
+        colored('The tail of the rope visits ', 'white'),
+        colored(len(visited), 'yellow'),
+        colored(' positions.')
+    ]))
 
 
 if __name__ == "__main__":

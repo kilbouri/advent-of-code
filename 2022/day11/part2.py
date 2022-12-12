@@ -1,6 +1,7 @@
 from functools import reduce
 from math import lcm
 from os.path import dirname
+from termcolor import colored
 
 import re
 
@@ -59,7 +60,7 @@ def main():
 
     for round in range(NUM_ROUNDS):
         if round % 500 == 0:
-            print(f'Round {round} of monkey business...')
+            print(colored(f'Round {round} of monkey business...', 'grey'))
 
         for monkey in monkeys:
             monkey.takeTurn(monkeys, LCM)
@@ -68,7 +69,11 @@ def main():
     twoMostActive = tuple(reversed(sorted(monkeyActivity)))[:2]
     score = reduce(lambda a, b: a * b, twoMostActive)
 
-    print(f'After {NUM_ROUNDS} of monkey business, the score is {score}')
+    print(''.join([
+        colored(f'After {NUM_ROUNDS} rounds, the level of monkey business is ', 'white'),
+        colored(score, 'yellow'),
+        colored('! Too bad you didn\'t bring bananas.', 'white')
+    ]))
 
 
 if __name__ == "__main__":

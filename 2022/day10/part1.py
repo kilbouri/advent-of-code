@@ -1,4 +1,5 @@
 from os.path import dirname
+from termcolor import colored
 
 
 def main():
@@ -9,12 +10,12 @@ def main():
 
     clock = 0
     xRegister = 1
-    total = 0
+    totalSignalStrength = 0
 
     def handleClockTick():
-        nonlocal total  # explicitly state that I don't want to shadow total
+        nonlocal totalSignalStrength  # explicitly state that I don't want to shadow total
         if clock in [20, 60, 100, 140, 180, 220]:
-            total += clock * xRegister
+            totalSignalStrength += clock * xRegister
 
     for instruction in instructions:
         if instruction[0] == 'noop':
@@ -31,7 +32,11 @@ def main():
             handleClockTick()
             xRegister += int(instruction[1])  # finish addx
 
-    print(total)
+    print(''.join([
+        colored('The total signal strength is ', 'grey'),
+        colored(totalSignalStrength, 'yellow'),
+        colored('.', 'grey')
+    ]))
 
 
 if __name__ == "__main__":

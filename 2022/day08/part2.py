@@ -1,6 +1,5 @@
 from os.path import dirname
-from pprint import pprint as print
-
+from termcolor import colored
 from itertools import product
 
 
@@ -30,7 +29,12 @@ def main():
     rows, cols = len(grid), len(grid[0])
     coordinates = product(range(rows), range(cols))
 
-    print(max([scenicScore(grid, *coord) for coord in coordinates]))
+    bestTree = max([scenicScore(grid, *coord) for coord in coordinates])
+    print(''.join([
+        colored('The tree with the most scenic view has a score of ', 'white'),
+        colored(bestTree, 'yellow'),
+        colored(' points. What a view!', 'white')
+    ]))
 
 
 if __name__ == "__main__":

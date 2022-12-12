@@ -47,9 +47,9 @@ def main():
 
     shortestTrailLength = bfsPathfind()
     print(''.join([
-        colored('After lots of exploring, you know the best trail is ', 'grey'),
-        colored(str(shortestTrailLength), 'yellow'),
-        colored(' steps long. Break time!', 'grey')
+        colored('After lots of exploring, you know the best trail is ', 'white'),
+        colored(shortestTrailLength, 'yellow'),
+        colored(' steps long. Break time!', 'white')
     ]))
 
 

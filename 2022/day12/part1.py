@@ -48,9 +48,9 @@ def main():
 
     stepsRequired = bfsPathfind()
     print(''.join([
-        colored('Out of breath, you reach your destination in just ', 'grey'),
-        colored(str(stepsRequired), 'yellow'),
-        colored(' steps!', 'grey')
+        colored('Out of breath, you reach your destination in just ', 'white'),
+        colored(stepsRequired, 'yellow'),
+        colored(' steps!', 'white')
     ]))
 
 
