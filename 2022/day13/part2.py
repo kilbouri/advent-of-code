@@ -1,15 +1,14 @@
-from bz2 import compress
 from functools import cmp_to_key
 from os.path import dirname
-from pprint import pprint as print
+from termcolor import colored
 from ast import literal_eval
 
-IN_ORDER = 1
+IN_ORDER = -1
 UNDECIDED = None
-NOT_IN_ORDER = 0
+NOT_IN_ORDER = 1
 
 
-def comparePackets(left, right) -> int | None:
+def comparePackets(left, right):
     leftIsInt = isinstance(left, int)  # if false, it is a list
     rightIsInt = isinstance(right, int)  # if false, it is a list
 
@@ -46,18 +45,23 @@ def main():
     with open(f'{dirname(__file__)}/input.txt', 'r') as file:
         packets = [literal_eval(line) for line in file.read().splitlines() if line]
 
-    packets.append([[2]])
-    packets.append([[6]])
+    FIRST_MARKER = [[2]]
+    SECOND_MARKER = [[6]]
 
-    def compare(left, right):
-        comparison = comparePackets(left, right)
-        if comparison == IN_ORDER:
-            return -1
-        else:
-            return 1
+    packets.append(FIRST_MARKER)
+    packets.append(SECOND_MARKER)
 
-    packets.sort(key=cmp_to_key(compare))
-    print((packets.index([[2]]) + 1) * (packets.index([[6]]) + 1))
+    # works because values for IN_ORDER, NOT_IN_ORDER, UNDECIDED have been chosen to
+    # conform to the cmp protocol
+    packets.sort(key=cmp_to_key(comparePackets))
+
+    decoderKey = (packets.index(FIRST_MARKER) + 1) * (packets.index(SECOND_MARKER) + 1)
+
+    print(''.join([
+        colored('With a headache from all the packet comparing, you find that ', 'white'),
+        colored(decoderKey, 'yellow'),
+        colored(' is the decoder key. It\'s naptime...', 'white')
+    ]))
 
 
 if __name__ == "__main__":

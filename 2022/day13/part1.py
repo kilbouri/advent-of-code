@@ -1,7 +1,6 @@
-from bz2 import compress
 from os.path import dirname
-from pprint import pprint as print
 from ast import literal_eval
+from termcolor import colored
 
 IN_ORDER = 1
 UNDECIDED = None
@@ -43,12 +42,18 @@ def comparePackets(left, right) -> int | None:
 
 def main():
     with open(f'{dirname(__file__)}/input.txt', 'r') as file:
-        groups = [group.split('\n') for group in file.read().split('\n\n')]
+        groups = file.read().split('\n\n')
 
-    packetPairs = [tuple(map(literal_eval, [g for g in group if g])) for group in groups]
+    packetPairs = [(literal_eval(packet) for packet in group.split('\n') if packet) for group in groups]
     outputs = [comparePackets(left, right) for left, right in packetPairs]
 
-    print(sum([i for i, compResult in enumerate(outputs, start=1) if compResult == IN_ORDER]))
+    score = sum([i for i, compResult in enumerate(outputs, start=1) if compResult == IN_ORDER])
+
+    print(''.join([
+        colored('After lots of head scratching, you know the sum of the indices of the in-order packets is ', 'white'),
+        colored(score, 'yellow'),
+        colored('.', 'white')
+    ]))
 
 
 if __name__ == "__main__":
