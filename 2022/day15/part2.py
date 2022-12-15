@@ -51,7 +51,7 @@ def main():
     result = MAX_BOUND * finalX + finalY  # a 2D-as-1D-array conversion! Neat!
 
     print(''.join([
-        colored(f'After "fancy trial and error", you find the missing sensor is at {(finalX, finalY)}, for a tuning frequency of ', 'white'),
+        colored(f'After "fancy trial and error", you find the missing beacon is at {(finalX, finalY)}, for a tuning frequency of ', 'white'),
         colored(result, 'yellow'),
         colored('. Good thing Elves can\'t hear such high frequencies.', 'white')
     ]))
