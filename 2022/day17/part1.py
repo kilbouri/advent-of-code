@@ -1,4 +1,5 @@
 from os.path import dirname
+from termcolor import colored
 
 
 def main():
@@ -37,6 +38,7 @@ def main():
     top = time = 0
 
     for numRocksFallen in range(SIMULATION_LENGTH):
+        print(f'\r{numRocksFallen / SIMULATION_LENGTH * 100:0.3f}%', end='')
         piece = getPiecePointSet(numRocksFallen % 5, top + 4)
 
         while not piece & tetrisBoard:
@@ -61,7 +63,12 @@ def main():
         tetrisBoard |= piece  # set the piece into the board
         top = max(y for _, y in tetrisBoard)  # calculate new board top (may not be the top of the piece!)
 
-    print(top)
+    print('')
+    print(''.join([
+        colored('The tower will be ', 'white'),
+        colored(top, 'yellow'),
+        colored(f' rocks tall after {SIMULATION_LENGTH} rocks have fallen.', 'white')
+    ]))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 from os.path import dirname
+from termcolor import colored
 
 
 def main():
@@ -94,8 +95,12 @@ def main():
 
         rocksFallen += 1
 
-    assert totalHeight == 1572093023267
-    print(f'\n{totalHeight}')
+    print('')
+    print(''.join([
+        colored('After just a few seconds, you tell the elephants, proudly, "The tower will be ', 'white'),
+        colored(totalHeight, 'yellow'),
+        colored(f' rocks tall!". Ever considered speedrunning?', 'white')
+    ]))
 
 
 if __name__ == "__main__":
