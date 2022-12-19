@@ -32,10 +32,10 @@ def maximizeGeodes(costOre, costClay, costObsidianOre, costObsidianClay, costGeo
 
         # prevent checking states we've already seen
         newState = (ore, clay, obsidian, geodes, oreRobots, clayRobots, obsidianRobots, geodeRobots, timeRemaining)
-        if newState not in visited:
-            visited.add(newState)
-        else:
+        if newState in visited:
             continue
+
+        visited.add(newState)
 
         # explore doing nothing for the next minute
         queue.append((ore + oreRobots, clay + clayRobots, obsidian + obsidianRobots,
